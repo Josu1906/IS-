@@ -1,0 +1,56 @@
+HOJA 1
+1.1 PROPOSITO
+El propósito de este documento va dirigido a los desarrolladores de Mercadea y para los departamentos de Mercadona encargados de este proyecto, para la correcta supervision y comunicación de lo que se quiere y de lo que no se quiere del producto final, para asegurar el mayor alineamiento posible entre lo que quiere el cliente y lo que vamos a desarrollar.
+1.2 Alcance
+Esta aplicación explicada en un alto nivel se va a encargar de la gestion de mercancías de los Mercadonas, desde la lista del personal de cada Mercadona, la cantidad de productos en el almacen, el análisis de que productos están siendo mas vendidos, sus fechas de vencimiento y la capacidad para gestionar que productos hay que reponer en el inventario cada semana. En resumen, la finalidad de esta aplicación es la crentralizacion de operaciones de gestion de los Mercadonas. 
+Esta aplicación no se encargara de los expedientes del usuario, hablese de documentos del personal del Mercadona, sus horarios, nominas, etc. La aplicación solo se reducira a mostrar sus nombres y documentos de identidad. Ademas, la aplicación en una primera instancia no se encargara de llevar un control de calidad de los productos, ya sean quejas o mejoras. Tampoco se encargara de seleccionar el distribuidor de mercancía de Mercadona, ya que el fin de la aplicacion es que en temas de gestion de mercancía haya una centralización y conexión entre los distintos departamentos de un Mercadona. Para cada Mercadona, solo se podrá acceder a su sistema de gestion los encargados de el y nada mas. Un encargado de un Mercadona X no puede entrometerse ni ver los datos de un Mercadona Y.
+Se busca con esto mejorar y automatizar los procesos dentro de un Mercadona, para asegurar la rigurosidad de los productos y su flujo.
+
+
+Tecnologias a usar orientadas a la escalabilidad
+-> React (Single Page Applications (SPA)) + Python ((Pandas, scikit-learn) en el futuro)(para futuros analisis)
+
+-> REDIS + PostgreSQL (por los grandes volúmenes de datos) -> tiliza Amazon RDS para PostgreSQL (con respaldos automáticos y alta disponibilidad) y Amazon ElastiCache para Redis.
+
+-> Lectores de Códigos de Barras y RFID, Impresoras de Etiquetas y Balanzas Digitales
+Implementar un agente local liviano (escrito en Python o Electron) instalado en cada estación de trabajo que se comunique con el hardware local (vía USB, Bluetooth o red) y transmita los datos al backend en la nube mediante WebSockets o peticiones HTTP seguras.
+
+-> Proveedores Cloud: AWS (Amazon Web Services)
+S3 para almacenar logs, reportes y etiquetas generadas, y API Gateway o ALB (Application Load Balancer) para gestionar el tráfico de entrada.
+
+Tareas: 
+Gestión de Personal (RRHH):
+
+Directorio de empleados por cada establecimiento (Mercadona).
+
+Control de turnos, horarios y asignación de puestos (caja, reposición, frescos).
+
+Control de asistencia y vacaciones.
+
+Control de Almacén e Inventario:
+
+Registro en tiempo real de las unidades disponibles de cada producto.
+
+Alertas automáticas de stock mínimo para evitar roturas de inventario.
+
+Categorización por pasillos, secciones y zonas del almacén.
+
+Gestión de Caducidades:
+
+Seguimiento de las fechas de vencimiento de los productos perecederos.
+
+Generación de alertas tempranas para aplicar descuentos o retirar artículos próximos a caducar.
+
+Optimización del método FIFO (First In, First Out) en la rotación de mercancía.
+
+Análisis de Ventas y Demanda:
+
+Paneles (dashboards) con estadísticas de los productos más vendidos por día, semana o mes.
+
+Informes de tendencias de consumo para prever picos de demanda (fines de semana, verano, festivos).
+
+Planificación y Reposición Semanal:
+
+Sistema automatizado de sugerencia de pedidos basado en el histórico de ventas y el stock actual.
+
+Coordinación logística para la recepción de mercancía de los proveedores o bloques logísticos.
